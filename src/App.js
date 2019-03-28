@@ -1,27 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Form from "./components/Form";
 
-class App extends Component {
+class App extends React.Component {
+
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      color: "red",
+      name: ""
+    }
+    this.onClickColor=this.onClickColor.bind(this);
+  }
+
+  onClickColor() {
+    this.setState({
+      color: this.states.color === "blue" ? "red" : "blue"
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Form 
+          name={this.state.name} 
+          color={this.state.color} 
+          onClick={this.onClickColor}
+        />
       </div>
-    );
+    )
   }
 }
 
